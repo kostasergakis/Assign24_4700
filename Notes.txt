@@ -1,0 +1,7 @@
+Tutorial links completed:
+	https://www.guru99.com/google-go-tutorial.html#10
+	https://tour.golang.org/welcome/1
+
+Other useful links used:
+	https://gobyexample.com/arrays
+	
