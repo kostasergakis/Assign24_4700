@@ -39,7 +39,6 @@ func testAlgo(seq []int) bool {
 }
 
 func generateSequence(size int) []int {
-
 	slice := make([]int, size, size)
 	rand.Seed(time.Now().UnixNano())
 	for i := 0; i < size; i++ {
