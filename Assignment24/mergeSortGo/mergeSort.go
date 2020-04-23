@@ -7,29 +7,38 @@ import (
 )
 
 func main() {
-	var length int = 100000
+	runTest(50)
+}
+
+func runTest(numTests int) {
+	var length = 1000
 	var sequence []int
 	var sortedSequence []int
-	sequence = generateSequence(length)
+	var times = make([]float64, numTests)
+	var sorted bool
 
-	//fmt.Println("Sequence before merge sort:\n", sequence)
-
-	sortedSequence = sort(sequence)
-
-	//fmt.Println("Sequence after merge sort:\n", sortedSequence)
-
-	var sorted bool = testAlgo(sortedSequence)
-	if sorted == true {
-		fmt.Println("The algorithm successfully sorted the array!")
-	} else {
-		fmt.Println("The algorithm did not successfully sort the array :(")
+	for i := 0; i < numTests; i++ {
+		sequence = generateSequence(length)
+		startTime := time.Now()
+		sortedSequence = sort(sequence)
+		totalTime := time.Now().Sub(startTime).Milliseconds()
+		times[i] = float64(totalTime) / 1000.00
+		sorted = testAlgo(sortedSequence)
+		if !sorted {
+			fmt.Printf("Sequence of size: %d failed to sort.", length)
+		}
+		length += 2000
 	}
+	// for i := 0; i < len(times); i++ {
+	fmt.Print(times)
+	// }
+
 }
 
 func testAlgo(seq []int) bool {
 	var pass bool = false
 	for i := 1; i < len(seq)-1; i++ {
-		if seq[i] > seq[i-1] {
+		if seq[i] >= seq[i-1] {
 			pass = true
 		} else {
 			pass = false
