@@ -1,5 +1,5 @@
 import re
-import matplotlib as plt
+from matplotlib import pyplot as plt
 
 PATH = "C:/Users/Woo Kei Cheung/Desktop/CSHW/cs4700/Assign24_4700/Assignment24"
 
@@ -11,7 +11,8 @@ def getWords(filename):
         n = len(f) - 1
         new = f[1:n]
         arr = re.split(', ', new)
-    return arr
+        intArr = [float(numeric_string) for numeric_string in arr]
+    return intArr
 
 def graph(py, java, go):
     start = 1000
@@ -32,6 +33,8 @@ def graph(py, java, go):
 
 def run():
     py = getWords("/mergeSortPy/pythonTimes.txt")
-    java = getWords()
-    go = getWords()
+    java = getWords("/JavaTimes.txt")
+    go = getWords("/GoTimes.txt")
     graph(py, java, go)
+
+run()
