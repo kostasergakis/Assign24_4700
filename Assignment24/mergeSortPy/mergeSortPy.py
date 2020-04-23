@@ -1,8 +1,8 @@
 import numpy as np
 import time
 
-def getRandArray():
-    return np.random.randint(1000, size=100000) 
+def getRandArray(n):
+    return np.random.randint(1000, size=n) 
 
 def mergeSort(a):
     if len(a) > 1:
@@ -33,7 +33,7 @@ def runTest():
     size = 1000
     timeArray = []
     while size <= 100000:
-        arr = getRandArray()
+        arr = getRandArray(size)
         start = time.time()
         mergeSort(arr)
         end = time.time() - start
